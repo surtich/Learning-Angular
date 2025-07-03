@@ -18,12 +18,20 @@
       }
       {{ product.title }}
     </li>
-  } @empty {
+  } @empty  {
     <p>No products found!</p>
   }
 </ul>
 
+@if (productDetail.product()) {
+  <p>
+    You selected:
+    <strong>{{ productDetail.product()!.title }}</strong>
+  </p>
+}
+
 <app-product-detail
-  [product]="selectedProduct"
-  (added)="onAdded($event)"
+#productDetail
+[product]="selectedProduct"
+(added)="onAdded()"
 ></app-product-detail>
