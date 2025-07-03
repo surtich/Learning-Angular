@@ -16,6 +16,7 @@ import { KeyLoggerComponent } from './key-logger/key-logger.component';
 export class AppComponent {
   title = 'World';
   settings = inject(APP_SETTINGS);
+  showLogger = true;
 
   title$ = timer(2000, 2000);
 
