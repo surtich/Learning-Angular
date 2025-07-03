@@ -9,6 +9,7 @@ import { ProductsService } from '../products';
   imports: [ProductDetail, SortPipe],
   templateUrl: './product-list.html',
   styleUrl: './product-list.css',
+  providers: [ProductsService],
 })
 export class ProductList implements OnInit {
   products: Product[] = [];
