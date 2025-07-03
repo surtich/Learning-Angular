@@ -1,10 +1,10 @@
 import { Component, input, output } from '@angular/core';
 import { Product } from '../product';
-import { CommonModule } from '@angular/common';
+import { CurrencyPipe, KeyValuePipe, LowerCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [CommonModule],
+  imports: [KeyValuePipe, CurrencyPipe, LowerCasePipe],
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css',
 })
