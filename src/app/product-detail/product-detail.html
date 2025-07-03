@@ -1,7 +1,7 @@
 @if (product()) {
   <p>
     You selected:
-    <strong>{{ productTitle }}</strong>
+    <strong>{{ product()!.title }}</strong>
   </p>
   <button (click)="addToCart()">Add to cart</button>
 }

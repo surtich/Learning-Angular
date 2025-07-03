@@ -9,5 +9,5 @@ import { ProductList } from './product-list/product-list';
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'my-app';
+  protected title = 'World';
 }
