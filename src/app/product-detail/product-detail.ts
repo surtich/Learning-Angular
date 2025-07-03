@@ -9,9 +9,9 @@ import { Product } from '../product';
 })
 export class ProductDetail {
   product = input<Product>();
-  added = output();
+  added = output<Product>();
   addToCart() {
-    this.added.emit();
+    this.added.emit(this.product()!);
   }
   
 }

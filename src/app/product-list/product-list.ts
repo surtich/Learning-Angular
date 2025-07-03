@@ -16,7 +16,7 @@ export class ProductList {
     { id: 3, title: 'Web camera' },
     { id: 4, title: 'Tablet' },
   ];
-  onAdded() {
-    alert(`${this.selectedProduct?.title} added to the cart!`);
+  onAdded(product: Product) {
+    alert(`${product.title} added to the cart!`);
   }
 }
