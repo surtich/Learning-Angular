@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, viewChild, input } from '@angular/core';
-import { fromEvent, tap, map, filter } from 'rxjs';
+import { fromEvent, tap } from 'rxjs';
 
 @Component({
   selector: 'app-key-logger',
@@ -17,6 +17,6 @@ export class KeyLoggerComponent implements OnInit {
       this.input()!.nativeElement, // Acceso al elemento nativo del DOM. viewChild devuelve un wrapper
       'keyup',
     );
-    logger$.subscribe((evt) => (this.keys += evt.key));
+    logger$.pipe(tap((evt) => (this.keys += evt.key))).subscribe(); // tap es similar a foreach en arrays
   }
 }
