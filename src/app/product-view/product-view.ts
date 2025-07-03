@@ -7,7 +7,6 @@ import { Product } from '../product';
   imports: [],
   templateUrl: './product-view.html',
   styleUrl: './product-view.css',
-  providers: [ProductViewService],
 })
 export class ProductView implements OnInit {
   id = input<number>();

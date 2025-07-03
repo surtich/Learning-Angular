@@ -5,13 +5,14 @@ import { SortPipe } from '../sort-pipe';
 import { ProductsService } from '../products';
 import { Favorites } from '../favorites/favorites';
 import { ProductView } from '../product-view/product-view';
+import { ProductViewService } from '../product-view/product-view.service';
 
 @Component({
   selector: 'app-product-list',
   imports: [Favorites, ProductDetail, ProductView, SortPipe],
   templateUrl: './product-list.html',
   styleUrl: './product-list.css',
-  providers: [ProductsService],
+  providers: [ProductsService, ProductViewService],
 })
 export class ProductList implements OnInit {
   products: Product[] = [];
