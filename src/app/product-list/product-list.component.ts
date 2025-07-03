@@ -13,7 +13,7 @@ import { ProductsService } from '../products.service';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   selectedProduct: Product | undefined;
-
+  
   constructor(private productService: ProductsService) {}
 
   onAdded() {
@@ -25,8 +25,12 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.productService.getProducts().subscribe((product) => {
-      this.products.push(product);
-    });
+    this.productService.getProducts().subscribe(
+      (product) => {
+        this.products.push(product);
+      },
+      (error) => console.error(error), // error
+      () => console.log('completado'),
+    );
   }
 }
