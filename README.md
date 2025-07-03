@@ -7,3 +7,4 @@ Este repositorio es una guía de estudio de la quinta edición del libro [Learin
 * [Capitulo 1 Primera Aplicación Angular](./docs/ch01.md)
 * [Capitulo 3 Estructurando la interfaz de usuario con componentes](./docs/ch03.md)
 * [Capitulo 4 Pipes y Directivas](./docs/ch04.md)
+* [Capitulo 5 Servicios](./docs/ch05.md)
