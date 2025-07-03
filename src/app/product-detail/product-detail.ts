@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, input, OnChanges, OnInit, output, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  OnChanges,
+  OnInit,
+  output,
+  SimpleChanges,
+} from '@angular/core';
 import { Product } from '../product';
 
 @Component({
@@ -23,10 +31,12 @@ export class ProductDetail implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     console.log('Product onChanges:', this.product());
     const product = changes['product'];
-    const oldValue = product.previousValue;
-    const newValue = product.currentValue;
-    console.log('Old value', oldValue);
-    console.log('New value', newValue);
+    if (!product.isFirstChange()) {
+      const oldValue = product.previousValue;
+      const newValue = product.currentValue;
+      console.log('Old value', oldValue);
+      console.log('New value', newValue);
+    }
   }
 
   addToCart() {
