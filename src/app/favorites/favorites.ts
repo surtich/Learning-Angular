@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
-import { ProductsService } from '../products';
-import { FavoritesService } from '../favorites.service';
+import { ProductsService } from '../products.service';
+import { favoritesFactory } from '../favorites';
 
 @Component({
   selector: 'app-favorites',
   imports: [],
   templateUrl: './favorites.html',
   styleUrl: './favorites.css',
-  providers: [{ provide: ProductsService, useClass: FavoritesService }],
+  providers: [{ provide: ProductsService, useFactory: favoritesFactory(true) }],
 })
 export class Favorites implements OnInit {
   products: Product[] = [];

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductDetail } from '../product-detail/product-detail';
 import { SortPipe } from '../sort-pipe';
-import { ProductsService } from '../products';
+import { ProductsService } from '../products.service';
 import { Favorites } from '../favorites/favorites';
 import { ProductView } from '../product-view/product-view';
 
