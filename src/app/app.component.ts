@@ -17,7 +17,7 @@ export class AppComponent {
 
   private onComplete() {
     return new Promise<void>((resolve) => {
-      setTimeout(() => {
+      setInterval(() => {
         resolve();
       }, 2000);
     });
