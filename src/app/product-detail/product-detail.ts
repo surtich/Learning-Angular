@@ -1,4 +1,4 @@
-import { Component, input, output, ViewEncapsulation } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Product } from '../product';
 
 @Component({
@@ -6,7 +6,6 @@ import { Product } from '../product';
   imports: [],
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css',
-  encapsulation: ViewEncapsulation.None,
 })
 export class ProductDetail {
   product = input<Product>();
@@ -14,5 +13,7 @@ export class ProductDetail {
   addToCart() {
     this.added.emit();
   }
-  
+  get productTitle() {
+    return this.product()!.title;
+  }
 }
