@@ -6,7 +6,7 @@ import { NumericDirective } from './numeric';
 
 @Component({
   selector: 'app-root',
-  imports: [CopyrightDirective, NumericDirective, RouterOutlet, ProductList],
+  imports: [CopyrightDirective, RouterOutlet, ProductList],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
