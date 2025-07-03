@@ -1,18 +1,19 @@
-import { Component, Host, OnInit, Optional } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products';
-import { CommonModule } from '@angular/common';
+import { FavoritesService } from '../favorites.service';
 
 @Component({
   selector: 'app-favorites',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './favorites.html',
   styleUrl: './favorites.css',
+  providers: [{ provide: ProductsService, useClass: FavoritesService }],
 })
 export class Favorites implements OnInit {
   products: Product[] = [];
-  constructor(@Optional() @Host() private productService: ProductsService) {}
+  constructor(private productService: ProductsService) {}
   ngOnInit(): void {
-    this.products = this.productService ? this.productService.getProducts() : [];
+    this.products = this.productService.getProducts();
   }
 }
