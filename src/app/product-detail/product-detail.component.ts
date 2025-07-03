@@ -1,14 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { Product } from '../product';
-import { CurrencyPipe, KeyValuePipe, LowerCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [KeyValuePipe, CurrencyPipe, LowerCasePipe],
-  templateUrl: './product-detail.html',
-  styleUrl: './product-detail.css',
+  imports: [CommonModule],
+  templateUrl: './product-detail.component.html',
+  styleUrl: './product-detail.component.css',
 })
-export class ProductDetail {
+export class ProductDetailComponent {
   product = input<Product>();
   added = output();
 
