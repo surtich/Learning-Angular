@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   input,
   OnChanges,
   OnDestroy,
@@ -21,8 +22,11 @@ export class ProductDetail implements OnInit, OnChanges, OnDestroy {
   product = input<Product>();
   added = output();
 
-  constructor() {
+  constructor(destroyRef: DestroyRef) {
     console.log('Product Constructor:', this.product());
+    destroyRef.onDestroy(() => {
+      console.log('Product onDestroy desde destroyRef:', this.product());
+    });
   }
 
   ngOnInit() {
@@ -30,7 +34,7 @@ export class ProductDetail implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('Product onDestroy:', this.product());
+    console.log('Product onDestroy desde ngOnDestroy:', this.product());
   }
 
   ngOnChanges(changes: SimpleChanges) {
