@@ -3,5 +3,6 @@
     You selected:
     <strong>{{ product()!.title }}</strong>
   </p>
+  <p>{{product()!.price | currency:'EUR'}}</p>
   <button (click)="addToCart()">Add to cart</button>
 }
