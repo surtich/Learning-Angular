@@ -8,3 +8,4 @@ Este repositorio es una guía de estudio de la quinta edición del libro [Learin
 * [Capitulo 3 Estructurando la interfaz de usuario con componentes](./docs/ch03.md)
 * [Capitulo 4 Pipes y Directivas](./docs/ch04.md)
 * [Capitulo 5 Servicios](./docs/ch05.md)
+* [Capitulo 6 RxJS en Angular](./docs/ch06.md)

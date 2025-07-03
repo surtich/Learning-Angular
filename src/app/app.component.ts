@@ -14,4 +14,21 @@ import { APP_SETTINGS, appSettings } from './app.settings';
 export class AppComponent {
   title = 'World';
   settings = inject(APP_SETTINGS);
+
+  private onComplete() {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    });
+  }
+
+  private setTitle = () => {
+    const timestamp = new Date();
+    this.title = `${this.settings.title} (${timestamp})`;
+  };
+
+  constructor() {
+    this.onComplete().then(this.setTitle);
+  }
 }
