@@ -20,3 +20,10 @@
   box-sizing: inherit;
   position: relative;
 }
+
+input.valid {
+  border: solid green;
+}
+input.invalid {
+  border: solid red;
+}
