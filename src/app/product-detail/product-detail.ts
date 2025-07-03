@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, OnInit, output } from '@angular/core';
 import { Product } from '../product';
 
 @Component({
@@ -8,12 +8,16 @@ import { Product } from '../product';
   styleUrl: './product-detail.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductDetail {
+export class ProductDetail implements OnInit {
   product = input<Product>();
   added = output();
 
   constructor() {
-    console.log('Product:', this.product());
+    console.log('Product Constructor:', this.product());
+  }
+
+  ngOnInit() {
+    console.log('Product onInit:', this.product());
   }
 
   addToCart() {
