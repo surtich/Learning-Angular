@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductDetail } from '../product-detail/product-detail';
 import { SortPipe } from '../sort-pipe';
@@ -12,8 +12,9 @@ import { ProductsService } from '../products';
 })
 export class ProductList implements OnInit {
   products: Product[] = [];
-  private productService = inject(ProductsService);
   selectedProduct: Product | undefined;
+
+  constructor(private productService: ProductsService) {}
 
   ngOnInit() {
     this.products = this.productService.getProducts();
