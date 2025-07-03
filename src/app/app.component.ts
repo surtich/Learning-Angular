@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS, appSettings } from './app.settings';
-import { Observable } from 'rxjs';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +16,7 @@ export class AppComponent {
   title = 'World';
   settings = inject(APP_SETTINGS);
 
-  title$ = new Observable<void>((observer) => {
-    setInterval(() => {
-      observer.next();
-    }, 2000);
-  });
+  title$ = timer(2000, 2000);
 
   private setTitle = () => {
     const timestamp = new Date();
