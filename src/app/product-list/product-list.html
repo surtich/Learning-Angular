@@ -23,7 +23,9 @@
   }
 </ul>
 
-<app-product-detail
-  [product]="selectedProduct"
-  (added)="onAdded()"
-></app-product-detail>
+@if (selectedProduct) {
+  <app-product-detail
+    [product]="selectedProduct"
+    (added)="onAdded()"
+  ></app-product-detail>
+}

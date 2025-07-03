@@ -3,6 +3,7 @@ import {
   Component,
   input,
   OnChanges,
+  OnDestroy,
   OnInit,
   output,
   SimpleChanges,
@@ -16,7 +17,7 @@ import { Product } from '../product';
   styleUrl: './product-detail.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductDetail implements OnInit, OnChanges {
+export class ProductDetail implements OnInit, OnChanges, OnDestroy {
   product = input<Product>();
   added = output();
 
@@ -26,6 +27,10 @@ export class ProductDetail implements OnInit, OnChanges {
 
   ngOnInit() {
     console.log('Product onInit:', this.product());
+  }
+
+  ngOnDestroy() {
+    console.log('Product onDestroy:', this.product());
   }
 
   ngOnChanges(changes: SimpleChanges) {
