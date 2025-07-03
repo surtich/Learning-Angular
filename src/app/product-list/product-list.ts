@@ -4,10 +4,11 @@ import { ProductDetail } from '../product-detail/product-detail';
 import { SortPipe } from '../sort-pipe';
 import { ProductsService } from '../products';
 import { Favorites } from '../favorites/favorites';
+import { ProductView } from '../product-view/product-view';
 
 @Component({
   selector: 'app-product-list',
-  imports: [Favorites, ProductDetail, SortPipe],
+  imports: [Favorites, ProductDetail, ProductView, SortPipe],
   templateUrl: './product-list.html',
   styleUrl: './product-list.css',
   providers: [ProductsService],
