@@ -5,6 +5,7 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { authGuard } from './auth.guard';
 import { productsResolver } from './products.resolver';
+import { checkoutGuard } from './checkout.guard';
 
 export const routes: Routes = [
   {
@@ -34,10 +35,7 @@ El orden de los `guards` en el `array` es importante. Si uno de los `guards` no 
 Angular evitará que el usuario abandone la ruta.
 */
     canDeactivate: [
-      () =>
-        confirm(
-          'You have pending items in your cart. Do you want to continue?',
-        ),
+      checkoutGuard,
     ],
   },
   { path: 'products/new', component: ProductCreateComponent },
