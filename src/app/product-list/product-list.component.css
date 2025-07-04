@@ -74,9 +74,3 @@ path {
 a:hover svg path {
   fill: var(--gray-900);
 }
-
-.pill-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}

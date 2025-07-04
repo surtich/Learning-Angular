@@ -2,11 +2,11 @@ import { Component, OnInit, Signal } from '@angular/core';
 import { Product } from '../product';
 import { SortPipe } from '../sort.pipe';
 import { ProductsService } from '../products.service';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
-  imports: [RouterLink, RouterOutlet, SortPipe],
+  imports: [RouterLink, SortPipe],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
