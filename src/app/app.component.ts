@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ProductListComponent } from './product-list/product-list.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS } from './app.settings';
 import { AuthComponent } from './auth/auth.component';
@@ -9,8 +8,8 @@ import { AuthComponent } from './auth/auth.component';
   selector: 'app-root',
   imports: [
     AuthComponent,
+    RouterLink,
     RouterOutlet,
-    ProductListComponent,
     CopyrightDirective
   ],
   templateUrl: './app.component.html',

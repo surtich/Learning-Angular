@@ -31,6 +31,15 @@ input {
 input.valid {
   border: solid green;
 }
+
 input.invalid {
   border: solid red;
+}
+
+a {
+  text-decoration: none;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
