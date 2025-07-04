@@ -60,6 +60,7 @@ Angular evitará que el usuario abandone la ruta.
 
     */
     loadChildren: () => import('./user.routes'),
+    canMatch: [authGuard],
   },
   // le decimos al router que redirija a la ruta `products` cuando la aplicación navegue a la ruta por defecto.
   // Una ruta con una cadena de ruta vacía es la ruta por defecto de la aplicación Angular.
