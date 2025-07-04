@@ -26,6 +26,9 @@
         },
         "@schematics/angular:resolver": {
           "typeSeparator": "."
+        },
+        "@schematics/angular:guard": {
+          "typeSeparator": "."
         }
       },
       "root": "",

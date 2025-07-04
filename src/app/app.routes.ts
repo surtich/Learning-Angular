@@ -3,10 +3,16 @@ import { CartComponent } from './cart/cart.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: 'products', component: ProductListComponent },
-  { path: 'cart', component: CartComponent },
+  /*
+  Cuando intentas acceder al carrito de compra desde la lista de productos sin autentificación,
+  siempre permaneces en la misma página. Esto se debe a que la redirección que ocurre debido al
+`guard` de autenticación no tiene ningún efecto cuando ya estás en la ruta redirigida.
+*/
+  { path: 'cart', component: CartComponent, canActivate: [authGuard] },
   { path: 'products/new', component: ProductCreateComponent },
   { path: 'products/:id', component: ProductDetailComponent },
   // le decimos al router que redirija a la ruta `products` cuando la aplicación navegue a la ruta por defecto.
