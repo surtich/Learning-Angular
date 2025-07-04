@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 export class ProductDetailComponent implements OnInit {
   id = input<number>();
   product$: Observable<Product> | undefined;
+  price: number | undefined;
 
   constructor(
     private productService: ProductsService,
@@ -36,7 +37,7 @@ export class ProductDetailComponent implements OnInit {
 
   changePrice(product: Product) {
     this.productService
-      .updateProduct(product.id, product.price)
+      .updateProduct(product.id, this.price!)
       .subscribe(() => this.router.navigate(['/products']));
   }
 
