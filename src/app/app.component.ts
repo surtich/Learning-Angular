@@ -20,7 +20,9 @@ export class AppComponent {
   title$ = timer(2000, 2000);
 
   private setTitle = () => {
-    this.currentDate.set(new Date());
+    this.currentDate.update((d) => {
+      return new Date(d.getFullYear() + 1, d.getMonth(), d.getDate(), 0, 0);
+    });
     this.title = `${this.settings.title} (${this.currentDate()})`;
   };
 
