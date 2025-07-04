@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
@@ -9,17 +9,12 @@ import { ProductCreateComponent } from '../product-create/product-create.compone
 
 @Component({
   selector: 'app-product-list',
-  imports: [
-    ProductCreateComponent,
-    ProductDetailComponent,
-    SortPipe,
-    AsyncPipe,
-  ],
+  imports: [ProductCreateComponent, ProductDetailComponent, SortPipe],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent implements OnInit {
-  products$: Observable<Product[]> | undefined;
+  products: Signal<Product[]> | undefined;
   selectedProduct: Product | undefined;
 
   constructor(private productService: ProductsService) {}
@@ -33,6 +28,6 @@ export class ProductListComponent implements OnInit {
   }
 
   private getProducts() {
-    this.products$ = this.productService.getProducts();
+    this.products = this.productService.getProducts();
   }
 }

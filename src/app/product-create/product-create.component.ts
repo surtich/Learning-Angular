@@ -17,7 +17,6 @@ export class ProductCreateComponent {
         title,
         price: Number(price),
         category,
-      })
-      .subscribe();
+      });
   }
 }
