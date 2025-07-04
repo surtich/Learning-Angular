@@ -41,4 +41,18 @@ export class ProductsService {
       }),
     );
   }
+
+  updateProduct(id: number, price: number): Observable<Product> {
+    return this.http
+      .patch<Product>(`${this.productsUrl}/${id}`, {
+        price,
+      })
+      .pipe(
+        map((product) => {
+          const index = this.products.findIndex((p) => p.id === id);
+          this.products[index].price = price;
+          return product;
+        }),
+      );
+  }
 }

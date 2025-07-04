@@ -22,6 +22,12 @@ button:hover {
   background: color-mix(in srgb, var(--button-accent) 50%, transparent);
 }
 
+button.secondary {
+  display: inline;
+  margin-left: 5px;
+  --button-accent: var(--vivid-pink);
+}
+
 .pill-group {
   display: flex;
   flex-direction: row;
