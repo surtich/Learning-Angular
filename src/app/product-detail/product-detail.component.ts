@@ -25,8 +25,8 @@ export class ProductDetailComponent implements OnChanges {
     this.added.emit();
   }
 
-  changePrice(product: Product, price: string) {
-    this.productService.updateProduct(product.id, Number(price));
+  async changePrice(product: Product, price: string) {
+    this.product = await this.productService.updateProduct(product.id, Number(price));
   }
 
   remove(product: Product) {
