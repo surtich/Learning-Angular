@@ -42,6 +42,25 @@ Angular evitará que el usuario abandone la ruta.
   },
   { path: 'products/new', component: ProductCreateComponent },
   { path: 'products/:id', component: ProductDetailComponent },
+  {
+    path: 'user',
+    /*
+    La propiedad `loadChildren` de un objeto de definición de ruta se utiliza para la carga `lazy-load` de rutas de Angular.
+    Devuelve una función lambda que utiliza una declaración de importación dinámica para la carga `lazy-load` del archivo
+    de rutas. La función de importación acepta la ruta relativa del archivo de rutas que se desea importar.
+
+    En la consola donde se ejecute ng serve se verá algo así:
+
+    Lazy chunk files    | Names         |  Raw size
+    chunk-LQ4T73KG.js   | user-routes   |   1.93 kB | 
+
+    En la pestaña Network de la consola de desarrollador, se puede comprobar que cuando se navega a /user
+    la primera vez, se descarga el `chunck`.
+
+
+    */
+    loadChildren: () => import('./user.routes'),
+  },
   // le decimos al router que redirija a la ruta `products` cuando la aplicación navegue a la ruta por defecto.
   // Una ruta con una cadena de ruta vacía es la ruta por defecto de la aplicación Angular.
   // La propiedad `pathMatch` le dice al router cómo hacer coincidir la URL con la propiedad de ruta raíz. En este caso, el router redirige a la ruta `products` solo cuando la URL coincide con la ruta raíz, que es la cadena vacía.
