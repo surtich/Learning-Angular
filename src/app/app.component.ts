@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CopyrightDirective } from './copyright.directive';
 import { APP_SETTINGS } from './app.settings';
 import { AuthComponent } from './auth/auth.component';
@@ -9,8 +9,9 @@ import { AuthComponent } from './auth/auth.component';
   imports: [
     AuthComponent,
     RouterLink,
+    RouterLinkActive,
     RouterOutlet,
-    CopyrightDirective
+    CopyrightDirective,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
