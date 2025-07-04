@@ -2,7 +2,7 @@ import { inject, Injectable, Signal, signal } from '@angular/core';
 import { firstValueFrom, tap } from 'rxjs';
 import { Product } from './product';
 import { APP_SETTINGS } from './app.settings';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,6 @@ export class ProductsService {
   getProducts(): Signal<Product[]> {
     const options = {
       params: new HttpParams().set('limit', 10),
-      headers: new HttpHeaders({ Authorization: 'myToken' }),
     };
     this.http
       .get<Product[]>(this.productsUrl, options)
