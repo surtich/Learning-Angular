@@ -34,16 +34,10 @@
             🏷️
           }
         }
-        {{ product.title }}
+        <a [routerLink]="[product.id]">{{ product.title }}</a>
       </li>
     } @empty {
       <p>No products found!</p>
     }
   </ul>
 }
-
-<app-product-detail
-  [id]="selectedProduct?.id"
-  (added)="onAdded()"
-  (deleted)="selectedProduct = undefined"
-></app-product-detail>

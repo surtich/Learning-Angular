@@ -55,3 +55,7 @@ button.secondary {
   letter-spacing: -0.00875rem;
   text-decoration: none;
 }
+
+:host {
+  width: 450px;
+}
