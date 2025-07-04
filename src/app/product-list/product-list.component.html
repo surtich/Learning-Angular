@@ -26,6 +26,7 @@
 <app-product-detail
   [id]="selectedProduct?.id"
   (added)="onAdded()"
+  (deleted)="selectedProduct = undefined"
 ></app-product-detail>
 
 <app-product-create></app-product-create>
