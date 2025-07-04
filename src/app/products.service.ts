@@ -14,13 +14,14 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Signal<Product[]> {
-    const options = {
-      params: new HttpParams().set('limit', 10),
-    };
-    this.http
-      .get<Product[]>(this.productsUrl, options)
-      .subscribe((products) => this.products.set(products));
-
+    if (this.products().length === 0) {
+      const options = {
+        params: new HttpParams().set('limit', 10),
+      };
+      this.http
+        .get<Product[]>(this.productsUrl, options)
+        .subscribe((products) => this.products.set(products));
+    }
     return this.products.asReadonly();
   }
 
