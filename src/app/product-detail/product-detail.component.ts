@@ -5,10 +5,11 @@ import { Product } from '../product';
 import { Observable, switchMap } from 'rxjs';
 import { ProductsService } from '../products.service';
 import { AuthService } from '../auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
 })
@@ -33,12 +34,10 @@ export class ProductDetailComponent implements OnInit {
     );
   }
 
-  changePrice(product: Product, price: string) {
+  changePrice(product: Product) {
     this.productService
-      .updateProduct(product.id, Number(price))
-      .subscribe(() => {
-        this.router.navigate(['/products']);
-      });
+      .updateProduct(product.id, product.price)
+      .subscribe(() => this.router.navigate(['/products']));
   }
 
   remove(product: Product) {
