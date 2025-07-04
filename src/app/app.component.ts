@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Signal, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CopyrightDirective } from './copyright.directive';
@@ -11,22 +11,23 @@ import { timer } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [{ provide: APP_SETTINGS, useValue: appSettings }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  title = 'World';
   settings = inject(APP_SETTINGS);
+  title: Signal<string> = signal('');
   currentDate = signal(new Date());
 
   title$ = timer(2000, 2000);
 
   private setTitle = () => {
-    this.currentDate.update((d) => {
-      return new Date(d.getFullYear() + 1, d.getMonth(), d.getDate(), 0, 0);
-    });
-    this.title = `${this.settings.title} (${this.currentDate()})`;
+    this.currentDate.set(new Date());
   };
 
   constructor() {
     this.title$.subscribe(this.setTitle);
+    this.title = computed(() => {
+      return `${this.settings.title} (${this.currentDate()})`;
+    });
   }
 }
