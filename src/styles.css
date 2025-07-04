@@ -28,11 +28,13 @@ input {
   border: 1px solid #bdbdbd;
 }
 
-input.valid {
+input.valid,
+input.ng-dirty.ng-valid {
   border: solid green;
 }
 
-input.invalid {
+input.invalid,
+input.ng-dirty.ng-invalid {
   border: solid red;
 }
 
