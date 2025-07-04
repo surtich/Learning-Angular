@@ -4,6 +4,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { authGuard } from './auth.guard';
+import { checkoutGuard } from './checkout.guard';
 
 export const routes: Routes = [
   { path: 'products', component: ProductListComponent },
@@ -12,7 +13,17 @@ export const routes: Routes = [
   siempre permaneces en la misma página. Esto se debe a que la redirección que ocurre debido al
 `guard` de autenticación no tiene ningún efecto cuando ya estás en la ruta redirigida.
 */
-  { path: 'cart', component: CartComponent, canActivate: [authGuard] },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [authGuard],
+    /*
+    La propiedad `canDeactivate` es un `array` porque múltiples `guards` pueden controlar la desactivación de rutas.
+El orden de los `guards` en el `array` es importante. Si uno de los `guards` no pasa,
+Angular evitará que el usuario abandone la ruta.
+*/
+    canDeactivate: [checkoutGuard],
+  },
   { path: 'products/new', component: ProductCreateComponent },
   { path: 'products/:id', component: ProductDetailComponent },
   // le decimos al router que redirija a la ruta `products` cuando la aplicación navegue a la ruta por defecto.
