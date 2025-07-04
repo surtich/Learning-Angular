@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { Product } from '../product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { SortPipe } from '../sort.pipe';
 import { ProductsService } from '../products.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product-list',
@@ -10,27 +11,24 @@ import { ProductsService } from '../products.service';
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
-export class ProductListComponent implements OnInit {
-  products: Product[] = [];
-  selectedProduct: Product | undefined;
-  
-  constructor(private productService: ProductsService) {}
+export class ProductListComponent {
+  product = toSignal(inject(ProductsService).getProducts(), {
+    initialValue: undefined,
+  });
+
+  products = signal<Product[]>([]);
+  selectedProduct: Product | undefined;  
+
+  constructor() {
+    effect(() => { // Se ejecuta cada vez que uno de los signals que lee cambie.
+      const newProduct = this.product();
+      if (newProduct) {
+        this.products.update((prev) => [...prev, newProduct]);
+      }
+    });
+  }
 
   onAdded() {
     alert(`${this.selectedProduct?.title} added to the cart!`);
-  }
-
-  ngOnInit(): void {
-    this.getProducts();
-  }
-
-  getProducts(): void {
-    this.productService.getProducts().subscribe(
-      (product) => {
-        this.products.push(product);
-      },
-      (error) => console.error(error), // error
-      () => console.log('completado'),
-    );
   }
 }
