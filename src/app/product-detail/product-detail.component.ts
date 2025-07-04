@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, OnInit, output } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product';
+import { Observable, switchMap } from 'rxjs';
 import { ProductsService } from '../products.service';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,37 +13,37 @@ import { Router } from '@angular/router';
   styleUrl: './product-detail.component.css',
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product | undefined;
-
-  // No podemos usar tipo `number` porque los parámetros de enrutamiento se pasan como cadenas.
-  id = input<string>();
-  added = output();
-  deleted = output();
+  id = input<number>();
+  product$: Observable<Product> | undefined;
 
   constructor(
     private productService: ProductsService,
     public authService: AuthService,
+    private route: ActivatedRoute,
     private router: Router,
   ) {}
 
+  addToCart() {}
+
   ngOnInit(): void {
-    this.product = this.productService.getProduct(Number(this.id()));
-  }
-
-  addToCart() {
-    // Esto lo dejamos para el capítulo 10
-  }
-
-  async changePrice(product: Product, price: string) {
-    this.product = await this.productService.updateProduct(
-      product.id,
-      Number(price),
+    this.product$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        return this.productService.getProduct(Number(params.get('id')));
+      }),
     );
-    this.router.navigate(['/products']);
   }
 
-  async remove(product: Product) {
-    await this.productService.deleteProduct(product.id);
-    this.router.navigate(['/products']);
+  changePrice(product: Product, price: string) {
+    this.productService
+      .updateProduct(product.id, Number(price))
+      .subscribe(() => {
+        this.router.navigate(['/products']);
+      });
+  }
+
+  remove(product: Product) {
+    this.productService.deleteProduct(product.id).subscribe(() => {
+      this.router.navigate(['/products']);
+    });
   }
 }

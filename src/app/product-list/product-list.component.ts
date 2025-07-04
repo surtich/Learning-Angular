@@ -1,29 +1,26 @@
-import { Component, OnInit, Signal } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, ActivatedRoute } from '@angular/router';
+import { Observable, map } from 'rxjs';
 import { Product } from '../product';
 import { SortPipe } from '../sort.pipe';
-import { ProductsService } from '../products.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
-  imports: [RouterLink, SortPipe],
+  imports: [SortPipe, AsyncPipe, RouterLink],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent implements OnInit {
-  products: Signal<Product[]> | undefined;
-  selectedProduct: Product | undefined;
+  products$: Observable<Product[]> | undefined;
 
-  constructor(private productService: ProductsService, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getProducts();
   }
 
   private getProducts() {
-    this.route.queryParamMap.subscribe(params => {
-      const limit = Number(params.get('limit'));
-      this.products = this.productService.getProducts(limit);
-    });
+    this.products$ = this.route.data.pipe(map((data) => data['products']));
   }
 }
