@@ -15,7 +15,11 @@ export class ProductsService {
   getProducts(): Observable<Product[]> {
     const options = new HttpParams().set('limit', 10);
     return this.http.get<Product[]>(this.productsUrl, {
-      params: options
+      params: options,
     });
+  }
+
+  getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.productsUrl}/${id}`);
   }
 }

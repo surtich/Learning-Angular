@@ -1,10 +1,12 @@
-@if (product()) {
-  <p>You selected:
-    <strong>{{product()!.title}}</strong>
+@let product = product$ | async;
+@if (product) {
+  <p>
+    You selected:
+    <strong>{{ product.title }}</strong>
   </p>
-  <p>{{product()!.price | currency:'EUR'}}</p>
+  <p>{{ product.price | currency: "EUR" }}</p>
   <div class="pill-group">
-    <p class="pill">{{product()!.category | lowercase}}</p>
-  </div>  
+    <p class="pill">{{ product.category }}</p>
+  </div>
   <button (click)="addToCart()">Add to cart</button>
 }
