@@ -1,5 +1,5 @@
 <h1>Add new product</h1>
-<form [formGroup]="productForm">
+<form [formGroup]="productForm" (ngSubmit)="createProduct()">
   <div>
     <label for="title">Title</label>
     <input id="title" #title formControlName="title" />
@@ -18,7 +18,7 @@
     </select>
   </div>
   <div>
-    <button (click)="createProduct()">
+    <button type="submit">
       Create
     </button>
   </div>
