@@ -6,12 +6,3 @@
 </main>
 <footer appCopyright>- v{{ settings.version }}</footer>
 <router-outlet />
-
-<label>
-  Show Key Logger
-  <input type="checkbox" (change)="showLogger = !showLogger" [checked]="showLogger"/>
-</label>
-<br/>
-@if (showLogger) {
-  <app-key-logger [numeric]="true"></app-key-logger>
-}
