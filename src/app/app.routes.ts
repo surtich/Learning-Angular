@@ -5,10 +5,15 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 export const routes: Routes = [
-  { path: 'products', component: ProductListComponent },
+  {
+    path: 'products',
+    component: ProductListComponent,
+    children: [
+      { path: 'new', component: ProductCreateComponent },
+      { path: ':id', component: ProductDetailComponent },
+    ],
+  },
   { path: 'cart', component: CartComponent },
-  { path: 'products/new', component: ProductCreateComponent },
-  { path: 'products/:id', component: ProductDetailComponent },
   // le decimos al router que redirija a la ruta `products` cuando la aplicación navegue a la ruta por defecto.
   // Una ruta con una cadena de ruta vacía es la ruta por defecto de la aplicación Angular.
   // La propiedad `pathMatch` le dice al router cómo hacer coincidir la URL con la propiedad de ruta raíz. En este caso, el router redirige a la ruta `products` solo cuando la URL coincide con la ruta raíz, que es la cadena vacía.
