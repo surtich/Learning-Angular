@@ -13,9 +13,16 @@
     <label for="price">Price</label>
     <input id="price" #price type="number" formControlName="price" required />
     @if (
-      productForm.controls.price.touched && productForm.controls.price.invalid
+      productForm.controls.price.touched &&
+      productForm.controls.price.hasError("required")
     ) {
       <span class="help-text">Price is required</span>
+    }
+    @if (
+      productForm.controls.price.touched &&
+      productForm.controls.price.hasError("min")
+    ) {
+      <span class="help-text">Price should be greater than 0</span>
     }
   </div>
   <div>
