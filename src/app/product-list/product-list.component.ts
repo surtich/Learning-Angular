@@ -2,7 +2,7 @@ import { Component, OnInit, Signal } from '@angular/core';
 import { Product } from '../product';
 import { SortPipe } from '../sort.pipe';
 import { ProductsService } from '../products.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -14,13 +14,16 @@ export class ProductListComponent implements OnInit {
   products: Signal<Product[]> | undefined;
   selectedProduct: Product | undefined;
 
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getProducts();
   }
 
   private getProducts() {
-    this.products = this.productService.getProducts();
+    this.route.queryParamMap.subscribe(params => {
+      const limit = Number(params.get('limit'));
+      this.products = this.productService.getProducts(limit);
+    });
   }
 }

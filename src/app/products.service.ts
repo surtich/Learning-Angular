@@ -13,10 +13,10 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Signal<Product[]> {
+  getProducts(limit?: number): Signal<Product[]> {
     if (this.products().length === 0) {
       const options = {
-        params: new HttpParams().set('limit', 10),
+        params: new HttpParams().set('limit', limit ?? 10),
       };
       this.http
         .get<Product[]>(this.productsUrl, options)
