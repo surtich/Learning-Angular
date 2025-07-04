@@ -9,3 +9,4 @@ Este repositorio es una guía de estudio de la quinta edición del libro [Learin
 * [Capitulo 4 Pipes y Directivas](./docs/ch04.md)
 * [Capitulo 5 Servicios](./docs/ch05.md)
 * [Capitulo 6 RxJS en Angular](./docs/ch06.md)
+* [Capitulo 7 Signals](./docs/ch07.md)
