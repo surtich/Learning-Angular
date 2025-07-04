@@ -5,11 +5,11 @@ import { Product } from '../product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { SortPipe } from '../sort.pipe';
 import { ProductsService } from '../products.service';
-import { ProductCreateComponent } from '../product-create/product-create.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
-  imports: [ProductCreateComponent, ProductDetailComponent, SortPipe],
+  imports: [ProductDetailComponent, RouterLink, SortPipe],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
