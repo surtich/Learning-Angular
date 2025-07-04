@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, input, OnChanges, output } from '@angular/core';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,7 +16,10 @@ export class ProductDetailComponent implements OnChanges {
   added = output();
   deleted = output();
 
-  constructor(private productService: ProductsService) {}
+  constructor(
+    private productService: ProductsService,
+    public authService: AuthService,
+  ) {}
 
   ngOnChanges(): void {
     this.product = this.productService.getProduct(this.id()!);
@@ -26,7 +30,10 @@ export class ProductDetailComponent implements OnChanges {
   }
 
   async changePrice(product: Product, price: string) {
-    this.product = await this.productService.updateProduct(product.id, Number(price));
+    this.product = await this.productService.updateProduct(
+      product.id,
+      Number(price),
+    );
   }
 
   remove(product: Product) {
