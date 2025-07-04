@@ -22,7 +22,12 @@ export const routes: Routes = [
 El orden de los `guards` en el `array` es importante. Si uno de los `guards` no pasa,
 Angular evitará que el usuario abandone la ruta.
 */
-    canDeactivate: [checkoutGuard],
+    canDeactivate: [
+      () =>
+        confirm(
+          'You have pending items in your cart. Do you want to continue?',
+        ),
+    ],
   },
   { path: 'products/new', component: ProductCreateComponent },
   { path: 'products/:id', component: ProductDetailComponent },
