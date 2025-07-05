@@ -11,6 +11,7 @@ import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatError, MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
+import { MatChip, MatChipSet } from '@angular/material/chips';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,6 +19,8 @@ import { MatIcon } from '@angular/material/icon';
     CommonModule,
     FormsModule,
     MatButton,
+    MatChip,
+    MatChipSet,
     MatError,
     MatFormField,
     MatIconButton,

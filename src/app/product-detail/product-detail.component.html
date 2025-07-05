@@ -37,9 +37,9 @@
       }
     </mat-form-field>
   </form>
-  <div class="pill-group">
-    <p class="pill">{{ product.category }}</p>
-  </div>
+  <mat-chip-set>
+    <mat-chip>{{ product.category }}</mat-chip>
+  </mat-chip-set>
   <div>
     @if (authService.isLoggedIn()) {
       <button mat-raised-button (click)="addToCart(product.id)">
