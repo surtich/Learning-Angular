@@ -57,10 +57,5 @@ label {
   font-size: 0.875rem;
 }
 
-button:disabled {
-  background-color: lightgrey !important;
-  cursor: not-allowed !important;
-}
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

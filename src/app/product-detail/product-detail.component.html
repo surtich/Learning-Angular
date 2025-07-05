@@ -25,7 +25,7 @@
   <div class="pill-group">
     <p class="pill">{{ product.category }}</p>
   </div>
-  <div class="button-group">
+  <div>
     @if (authService.isLoggedIn()) {
       <button (click)="addToCart(product.id)">Add to cart</button>
     }
