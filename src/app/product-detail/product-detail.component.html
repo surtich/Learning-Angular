@@ -29,6 +29,6 @@
     @if (authService.isLoggedIn()) {
       <button (click)="addToCart(product.id)">Add to cart</button>
     }
-    <button class="delete" (click)="remove(product)">Delete</button>
+    <button mat-stroked-button class="delete" (click)="remove(product)">Delete</button>
   </div>
 }

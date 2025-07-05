@@ -7,10 +7,11 @@ import { ProductsService } from '../products.service';
 import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../cart.service';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatButton],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
 })
