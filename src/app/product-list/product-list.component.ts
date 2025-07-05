@@ -4,10 +4,12 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { Product } from '../product';
 import { SortPipe } from '../sort.pipe';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-product-list',
-  imports: [SortPipe, AsyncPipe, RouterLink],
+  imports: [SortPipe, AsyncPipe, MatIcon, MatMiniFabButton, RouterLink],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
