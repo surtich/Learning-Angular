@@ -7,11 +7,24 @@ import { ProductsService } from '../products.service';
 import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../cart.service';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatError, MatFormField, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [CommonModule, FormsModule, MatButton],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatButton,
+    MatError,
+    MatFormField,
+    MatIconButton,
+    MatInput,
+    MatIcon,
+    MatSuffix,
+  ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
 })
