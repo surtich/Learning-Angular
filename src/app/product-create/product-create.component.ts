@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from '../products.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { priceMaximumValidator } from '../price-maximum.validator';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-create',
@@ -10,7 +11,7 @@ import { priceMaximumValidator } from '../price-maximum.validator';
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css',
 })
-export class ProductCreateComponent {
+export class ProductCreateComponent implements OnInit, OnDestroy {
   productForm = new FormGroup({
     title: new FormControl('', {
       nonNullable: true,
@@ -27,10 +28,24 @@ export class ProductCreateComponent {
     category: new FormControl('', { nonNullable: true }),
   });
 
+  categorySubscription: Subscription | undefined;
+
   constructor(
     private productsService: ProductsService,
     private router: Router,
   ) {}
+
+  ngOnInit(): void {
+    this.categorySubscription = this.productForm.controls.category.valueChanges.subscribe(
+      () => {
+        this.productForm.controls.price.reset();
+      },
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.categorySubscription?.unsubscribe();
+  }
 
   createProduct() {
     /*
