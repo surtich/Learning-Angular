@@ -21,23 +21,6 @@
   position: relative;
 }
 
-input {
-  border-radius: 4px;
-  padding: 8px;
-  margin-bottom: 16px;
-  border: 1px solid #bdbdbd;
-}
-
-input.valid,
-input.ng-dirty.ng-valid {
-  border: solid green;
-}
-
-input.invalid,
-input.ng-dirty.ng-invalid {
-  border: solid red;
-}
-
 a {
   text-decoration: none;
 }

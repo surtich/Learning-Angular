@@ -1,14 +1,28 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from '../products.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { priceMaximumValidator } from '../price-maximum.validator';
 import { Subscription } from 'rxjs';
 import { MatButton } from '@angular/material/button';
+import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-product-create',
-  imports: [ReactiveFormsModule, MatButton],
+  imports: [
+    ReactiveFormsModule,
+    MatButton,
+    MatError,
+    MatFormField,
+    MatInput,
+    MatLabel,
+  ],
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css',
 })
@@ -37,11 +51,10 @@ export class ProductCreateComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.categorySubscription = this.productForm.controls.category.valueChanges.subscribe(
-      () => {
+    this.categorySubscription =
+      this.productForm.controls.category.valueChanges.subscribe(() => {
         this.productForm.controls.price.reset();
-      },
-    );
+      });
   }
 
   ngOnDestroy(): void {
