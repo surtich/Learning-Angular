@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from './product';
-import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, of, retry, tap, throwError } from 'rxjs';
 import { APP_SETTINGS } from './app.settings';
 
 @Injectable({
@@ -30,6 +30,7 @@ export class ProductsService {
             this.products = products;
             return products;
           }),
+          retry(2),
           catchError(this.handleError),
         );
     }
