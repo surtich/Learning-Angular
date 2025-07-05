@@ -31,7 +31,6 @@ export class ProductsService {
             return products;
           }),
           retry(2),
-          catchError(this.handleError),
         );
     }
     return of(this.products);
@@ -72,31 +71,5 @@ export class ProductsService {
         this.products.splice(index, 1);
       }),
     );
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    let message = '';
-
-    switch (error.status) {
-      /*
-      Un error con un estado de 0 indica que es un error que ocurrió en el lado del cliente
-      de la aplicación.
-      */
-      case 0:
-        message = 'Client error';
-        break;
-      case HttpStatusCode.InternalServerError:
-        message = 'Server error';
-        break;
-      case HttpStatusCode.BadRequest:
-        message = 'Request error';
-        break;
-      default:
-        message = 'Unknown error';
-    }
-
-    console.error(message, error.error);
-
-    return throwError(() => error);
   }
 }
