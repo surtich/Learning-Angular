@@ -6,10 +6,17 @@ import { Product } from '../product';
 import { SortPipe } from '../sort.pipe';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-product-list',
-  imports: [SortPipe, AsyncPipe, MatIcon, MatMiniFabButton, RouterLink],
+  imports: [
+    SortPipe,
+    AsyncPipe,
+    MatCardModule, MatIcon,
+    MatMiniFabButton,
+    RouterLink,
+  ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })

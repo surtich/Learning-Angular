@@ -9,23 +9,16 @@
   </div>
 }
 
-<ul class="pill-group">
-  @for (product of products | sort; track product.id) {
-    <li class="pill">
-      @switch (product.category) {
-        @case ("electronics") {
-          ⌨️
-        }
-        @case ("jewelery") {
-          💎
-        }
-        @default {
-          🏷️
-        }
-      }
-      <a [routerLink]="[product.id]">{{ product.title }}</a>
-    </li>
-  } @empty {
-    <p>No products found!</p>
-  }
-</ul>
+@for (product of products | sort; track product.id) {
+  <mat-card [routerLink]="[product.id]">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ product.title }}</mat-card-title>
+        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+        <img mat-card-sm-image [src]="product.image" />
+      </mat-card-title-group>
+    </mat-card-header>
+  </mat-card>
+} @empty {
+  <p>No products found!</p>
+}
