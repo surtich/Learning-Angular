@@ -4,10 +4,11 @@ import { ProductsService } from '../products.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { priceMaximumValidator } from '../price-maximum.validator';
 import { Subscription } from 'rxjs';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-product-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatButton],
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css',
 })
