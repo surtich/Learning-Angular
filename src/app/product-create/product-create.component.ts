@@ -12,6 +12,8 @@ import { Subscription } from 'rxjs';
 import { MatButton } from '@angular/material/button';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { MatOption } from '@angular/material/autocomplete';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-product-create',
@@ -22,6 +24,8 @@ import { MatInput } from '@angular/material/input';
     MatFormField,
     MatInput,
     MatLabel,
+    MatOption,
+    MatSelect,
   ],
   templateUrl: './product-create.component.html',
   styleUrl: './product-create.component.css',
