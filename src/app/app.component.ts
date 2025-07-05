@@ -16,12 +16,7 @@ import { AuthComponent } from './auth/auth.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements AfterViewInit {
-  title = ''
+export class AppComponent {
+  title = '';
   settings = inject(APP_SETTINGS);
-
-  ngAfterViewInit(): void {
-    // en la consola de desarrollador se muestra un error
-    this.title = this.settings.title;
-  }
 }

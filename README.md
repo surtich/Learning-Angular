@@ -14,3 +14,4 @@ Este repositorio es una guía de estudio de la quinta edición del libro [Learin
 * [Capitulo 9 Routing](./docs/ch09.md)
 * [Capitulo 10 Forms](./docs/ch10.md)
 * [Capitulo 11 Manejo de Errores de Aplicación](./docs/ch11.md)
+* [Capitulo 12 Angular Material](./docs/ch12.md)
