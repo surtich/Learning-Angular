@@ -1,7 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from './product';
-import { Observable, map, of, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
 import { APP_SETTINGS } from './app.settings';
 
 @Injectable({
@@ -24,6 +24,10 @@ export class ProductsService {
           map((products) => {
             this.products = products;
             return products;
+          }),
+          catchError((error: HttpErrorResponse) => {
+            console.error(error);
+            return throwError(() => error);
           }),
         );
     }
