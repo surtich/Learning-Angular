@@ -8,10 +8,15 @@ import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../cart.service';
 import { MatButton, MatIconButton } from '@angular/material/button';
-import { MatError, MatFormField, MatSuffix } from '@angular/material/form-field';
+import {
+  MatError,
+  MatFormField,
+  MatSuffix,
+} from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
 import { MatChip, MatChipSet } from '@angular/material/chips';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-detail',
@@ -26,6 +31,7 @@ import { MatChip, MatChipSet } from '@angular/material/chips';
     MatIconButton,
     MatInput,
     MatIcon,
+    MatSnackBarModule,
     MatSuffix,
   ],
   templateUrl: './product-detail.component.html',
@@ -42,10 +48,15 @@ export class ProductDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private cartService: CartService,
+    private snackbar: MatSnackBar,
   ) {}
 
   addToCart(id: number) {
-    this.cartService.addProduct(id).subscribe();
+    this.cartService.addProduct(id).subscribe(() => {
+      this.snackbar.open('Product added to cart!', undefined, {
+        duration: 1000,
+      });
+    });
   }
 
   ngOnInit(): void {
