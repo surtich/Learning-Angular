@@ -20,13 +20,13 @@
   <div class="content">
     <router-outlet />
   </div>
-  @defer {
+  @defer (on viewport) {
     <app-featured />
-  } @loading (minimum 1s) {
-    <mat-spinner ngSkipHydration></mat-spinner>
-  } @error() {
+  } @placeholder (minimum 1s) {
+    <img src="placeholder.png" />
+  } @error {
     <span>An error occurred while loading the featured product</span>
-    }
+  }
 </main>
 <footer>
   <mat-toolbar>
