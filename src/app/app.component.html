@@ -24,7 +24,9 @@
     <app-featured />
   } @loading (minimum 1s) {
     <mat-spinner ngSkipHydration></mat-spinner>
-  }
+  } @error() {
+    <span>An error occurred while loading the featured product</span>
+    }
 </main>
 <footer>
   <mat-toolbar>
