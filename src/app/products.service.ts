@@ -72,4 +72,8 @@ export class ProductsService {
       }),
     );
   }
+
+  getFeatured(): Observable<Product> {
+    return this.http.get<Product>(this.productsUrl + '/20');
+  }
 }

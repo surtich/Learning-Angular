@@ -7,12 +7,14 @@ import { MatButton } from '@angular/material/button';
 import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
 import { MatBadge } from '@angular/material/badge';
 import { CartService } from './cart.service';
+import { FeaturedComponent } from './featured/featured.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     AuthComponent,
     CopyrightDirective,
+    FeaturedComponent,
     MatBadge,
     MatButton,
     MatToolbar,
