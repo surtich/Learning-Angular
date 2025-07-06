@@ -43,3 +43,8 @@ mat-card {
   margin: 1.375rem;
   cursor: pointer;
 }
+
+img {
+  object-fit: contain;
+  object-position: right 5px top 0;
+}

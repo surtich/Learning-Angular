@@ -1,4 +1,4 @@
-import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, NgOptimizedImage } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
@@ -24,6 +24,7 @@ import {
     MatIcon,
     MatMiniFabButton,
     MatTableModule,
+    NgOptimizedImage,
     RouterLink,
     SortPipe,
   ],
