@@ -5,14 +5,17 @@ import { APP_SETTINGS } from './app.settings';
 import { AuthComponent } from './auth/auth.component';
 import { MatButton } from '@angular/material/button';
 import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
+import { MatBadge } from '@angular/material/badge';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-root',
   imports: [
     AuthComponent,
     CopyrightDirective,
+    MatBadge,
     MatButton,
-    MatToolbar, 
+    MatToolbar,
     MatToolbarRow,
     RouterLink,
     RouterOutlet,
@@ -23,4 +26,5 @@ import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
 export class AppComponent {
   title = '';
   settings = inject(APP_SETTINGS);
+  cartService = inject(CartService);
 }

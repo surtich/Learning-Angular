@@ -78,6 +78,9 @@ main {
   margin-inline: 0.5rem;
 }
 
+button {
+  margin: 5px;
+}
 
 @media screen and (max-width: 650px) {
   .content {
