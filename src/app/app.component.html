@@ -22,8 +22,8 @@
   </div>
   @defer {
     <app-featured />
-  } @placeholder (minimum 1s) {
-    <img src="placeholder.png" />
+  } @loading (minimum 1s) {
+    <mat-spinner ngSkipHydration></mat-spinner>
   }
 </main>
 <footer>
